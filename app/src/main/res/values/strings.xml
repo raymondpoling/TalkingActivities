@@ -3,4 +3,11 @@
     <string name="make_a_guess">Make a guess!</string>
     <string name="guess_label">Guess</string>
     <string name="hints_label">Hints</string>
+    <string name="solution">Solution</string>
+    <string name="guesses">Guesses</string>
+    <string name="give_a_clue">give a clue</string>
+    <string name="give_clue">Give Clue</string>
+    <string name="accept_answer">Accept Answer</string>
+    <string name="swap_players">Swap Players!</string>
+    <string name="swap_players">Swap Players!</string>
 </resources>
