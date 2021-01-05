@@ -1,0 +1,2 @@
+rootProject.name = "TalkingActivities"
+include ':app'
