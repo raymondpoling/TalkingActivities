@@ -7,7 +7,7 @@
     tools:context=".view.GuessActivity">
 
     <TextView
-        android:id="@+id/clue_text_view"
+        android:id="@+id/hint_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="48dp"
