@@ -26,9 +26,7 @@ public class SwapActivity extends AppCompatActivity {
         Intent intent = new Intent(this, GuessActivity.class);
         intent.putExtra(Constants.PLAY, previousIntent.getSerializableExtra(Constants.PLAY).toString());
 
-        swapPlayerReminderTextView.setOnClickListener(v -> {
-            startActivityForResult(intent, Constants.GAME_REQUEST);
-        });
+        swapPlayerReminderTextView.setOnClickListener(v -> startActivityForResult(intent, Constants.GAME_REQUEST));
     }
 
     @Override

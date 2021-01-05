@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TalkingActivities">
-        <activity android:name=".view.SwapActivity"></activity>
+        <activity android:name=".view.SwapActivity" />
         <activity android:name=".view.GuessActivity" />
         <activity android:name=".view.AskerActivity">
             <intent-filter>
