@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.mousehole.talkingactivities.R;
-import org.mousehole.talkingactivities.model.GameData;
 import org.mousehole.talkingactivities.util.Constants;
 
 import java.util.Random;
@@ -29,20 +28,21 @@ public class AskerActivity extends AppCompatActivity {
     private Button submitButton, acceptButton;
 
     private final Random random = new Random();
-    private GameData gameData;
 
-    public void selectAnswer() {
-        String answer = sharedPreferences.getString(SOLUTION,
+    public void selectSolution() {
+        String solution = sharedPreferences.getString(SOLUTION,
                  Constants.possibleAnswers[
                             random.nextInt(Constants.possibleAnswers.length)].toUpperCase());
-        solutionTextView.setText(answer);
+        solutionTextView.setText(solution);
     }
 
+    /*
+    Used for cleaning up after a successful guess.
+     */
     public void clear() {
-        gameData = new GameData("", "");
         sharedPreferences.edit().clear().apply();
         guessTextView.setText("");
-        selectAnswer();
+        selectSolution();
     }
 
     @Override
@@ -59,14 +59,11 @@ public class AskerActivity extends AppCompatActivity {
         submitButton = findViewById(R.id.send_1_button);
         acceptButton = findViewById(R.id.accept_button);
 
-        selectAnswer();
+        selectSolution();
 
-        String hints = sharedPreferences.getString(Constants.HINT, "");
-        String guesses = sharedPreferences.getString(Constants.GUESS, "");
+        String guess = sharedPreferences.getString(Constants.GUESS, "");
 
-        gameData = new GameData(guesses, hints);
-
-        Log.d(Constants.HINT, "What is the hints? " + hints);
+        guessTextView.setText(guess);
 
         submitButton.setOnClickListener(v -> {
             String hint = hintEditText.getText().toString();
@@ -74,7 +71,7 @@ public class AskerActivity extends AppCompatActivity {
             sharedPreferences.edit().putString(Constants.HINT, hint).apply();
 
             Intent hintIntent = new Intent(this, SwapActivity.class);
-            hintIntent.putExtra(PLAY, hints);
+            hintIntent.putExtra(PLAY, hint);
             startActivityForResult(hintIntent, GAME_REQUEST);
         });
 
@@ -88,5 +85,12 @@ public class AskerActivity extends AppCompatActivity {
             guessTextView.setText(sharedPreferences.getString(Constants.GUESS, ""));
             hintEditText.setText("");
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String guess = sharedPreferences.getString(Constants.GUESS, "");
+        guessTextView.setText(guess);
     }
 }

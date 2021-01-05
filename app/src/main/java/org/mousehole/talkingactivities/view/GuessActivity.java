@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import org.mousehole.talkingactivities.R;
-import org.mousehole.talkingactivities.model.GameData;
 import org.mousehole.talkingactivities.util.Constants;
 
 public class GuessActivity extends AppCompatActivity {
@@ -21,7 +20,6 @@ public class GuessActivity extends AppCompatActivity {
     private TextView hintTextView;
 
     private SharedPreferences sharedPreferences;
-    private GameData gameData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,21 +33,17 @@ public class GuessActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
 
-        String guesses = sharedPreferences.getString(Constants.GUESS, "");
-        String hints = sharedPreferences.getString(Constants.HINT, "");
+        String hint = sharedPreferences.getString(Constants.HINT, "");
 
-        gameData = new GameData(guesses, hints);
-
-        hintTextView.setText(gameData.getHints());
+        hintTextView.setText(hint);
 
         sendButton.setOnClickListener(v -> {
-            String guess = guessEditText.getText().toString() + "\n" + guesses;
+            String guess = guessEditText.getText().toString();
             Log.d("TAG: GUESS", guess);
-            gameData.addGuess(guess);
-            sharedPreferences.edit().putString(Constants.GUESS, gameData.getGuesses()).apply();
+            sharedPreferences.edit().putString(Constants.GUESS, guess).apply();
 
             Intent resultIntent = new Intent();
-            resultIntent.putExtra(Constants.GUESS, gameData.getGuesses());
+            resultIntent.putExtra(Constants.GUESS, guess);
             setResult(RESULT_OK, resultIntent);
             finish();
         });
@@ -58,9 +52,7 @@ public class GuessActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        String hints = sharedPreferences.getString(Constants.HINT, "");
-        String guesses = sharedPreferences.getString(Constants.GUESS, "");
-        gameData = new GameData(guesses, hints);
-        hintTextView.setText(gameData.getHints());
+        String hint = sharedPreferences.getString(Constants.HINT, "");
+        hintTextView.setText(hint);
     }
 }
