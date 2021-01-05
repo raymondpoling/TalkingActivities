@@ -35,8 +35,8 @@ public class GuessActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
 
-        String guesses = sharedPreferences.getString(Constants.GUESSES, "");
-        String hints = sharedPreferences.getString(Constants.HINTS, "");
+        String guesses = sharedPreferences.getString(Constants.GUESS, "");
+        String hints = sharedPreferences.getString(Constants.HINT, "");
 
         gameData = new GameData(guesses, hints);
 
@@ -46,10 +46,10 @@ public class GuessActivity extends AppCompatActivity {
             String guess = guessEditText.getText().toString() + "\n" + guesses;
             Log.d("TAG: GUESS", guess);
             gameData.addGuess(guess);
-            sharedPreferences.edit().putString(Constants.GUESSES, gameData.getGuesses()).apply();
+            sharedPreferences.edit().putString(Constants.GUESS, gameData.getGuesses()).apply();
 
             Intent resultIntent = new Intent();
-            resultIntent.putExtra(Constants.GUESSES, gameData.getGuesses());
+            resultIntent.putExtra(Constants.GUESS, gameData.getGuesses());
             setResult(RESULT_OK, resultIntent);
             finish();
         });
@@ -58,8 +58,8 @@ public class GuessActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        String hints = sharedPreferences.getString(Constants.HINTS, "");
-        String guesses = sharedPreferences.getString(Constants.GUESSES, "");
+        String hints = sharedPreferences.getString(Constants.HINT, "");
+        String guesses = sharedPreferences.getString(Constants.GUESS, "");
         gameData = new GameData(guesses, hints);
         hintTextView.setText(gameData.getHints());
     }

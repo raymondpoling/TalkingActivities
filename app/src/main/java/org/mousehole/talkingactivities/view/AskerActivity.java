@@ -61,17 +61,17 @@ public class AskerActivity extends AppCompatActivity {
 
         selectAnswer();
 
-        String hints = sharedPreferences.getString(Constants.HINTS, "");
-        String guesses = sharedPreferences.getString(Constants.GUESSES, "");
+        String hints = sharedPreferences.getString(Constants.HINT, "");
+        String guesses = sharedPreferences.getString(Constants.GUESS, "");
 
         gameData = new GameData(guesses, hints);
 
-        Log.d(Constants.HINTS, "What is the hints? " + hints);
+        Log.d(Constants.HINT, "What is the hints? " + hints);
 
         submitButton.setOnClickListener(v -> {
             String hint = hintEditText.getText().toString();
-            Log.d(Constants.HINTS, "hint is " + hint);
-            sharedPreferences.edit().putString(Constants.HINTS, hint).apply();
+            Log.d(Constants.HINT, "hint is " + hint);
+            sharedPreferences.edit().putString(Constants.HINT, hint).apply();
 
             Intent hintIntent = new Intent(this, SwapActivity.class);
             hintIntent.putExtra(PLAY, hints);
@@ -85,7 +85,7 @@ public class AskerActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == GAME_REQUEST) {
-            guessTextView.setText(sharedPreferences.getString(Constants.GUESSES, ""));
+            guessTextView.setText(sharedPreferences.getString(Constants.GUESS, ""));
             hintEditText.setText("");
         }
     }

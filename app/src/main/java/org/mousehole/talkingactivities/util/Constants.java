@@ -18,7 +18,7 @@ public final class Constants {
 
     public static final String PLAY = "play";
     public static final String GAME_DATA = "game_data";
-    public static final String HINTS = "hints";
-    public static final String GUESSES = "guesses";
+    public static final String HINT = "hint";
+    public static final String GUESS = "guess";
     public static final int GAME_REQUEST = 707;
 }
