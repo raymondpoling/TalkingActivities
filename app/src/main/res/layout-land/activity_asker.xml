@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/solution_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/standard_margin"
+        android:text="@string/solution"
+        android:textColor="@color/solution_color"
+        android:textSize="@dimen/medium_text"
+        app:layout_constraintTop_toTopOf="@id/solution_text_view"
+        app:layout_constraintBottom_toBottomOf="@id/solution_text_view"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/guess_const_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/standard_margin"
+        android:text="@string/guess_label"
+        android:textSize="@dimen/medium_text"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/accept_button"
+        app:layout_constraintEnd_toEndOf="@id/accept_button"/>
+
+    <EditText
+        android:id="@+id/hint_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/standard_margin"
+        android:textSize="@dimen/medium_text"
+        android:ems="8"
+        android:hint="@string/give_clue_hint"
+        android:inputType="textPersonName"
+        app:layout_constraintTop_toTopOf="@id/solution_text_view"
+        app:layout_constraintBottom_toBottomOf="@id/solution_text_view"
+        app:layout_constraintStart_toEndOf="@id/accept_button"
+        android:importantForAutofill="no" />
+
+    <Button
+        android:id="@+id/send_1_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/standard_margin"
+
+        android:textSize="@dimen/medium_text"
+        android:text="@string/give_clue_button_label"
+        app:layout_constraintStart_toEndOf="@id/hint_edit_text"
+        app:layout_constraintTop_toTopOf="@id/solution_text_view"
+        app:layout_constraintBottom_toBottomOf="@id/solution_text_view"
+        />
+
+    <TextView
+        android:id="@+id/guess_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/standard_margin"
+        android:textSize="@dimen/medium_text"
+        app:layout_constraintTop_toBottomOf="@id/hint_edit_text"
+        app:layout_constraintStart_toStartOf="@id/hint_edit_text"/>
+
+    <Button
+        android:id="@+id/accept_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/standard_margin"
+        android:text="@string/accept_answer"
+        android:textSize="@dimen/medium_text"
+        app:layout_constraintTop_toTopOf="@id/solution_text_view"
+        app:layout_constraintBottom_toBottomOf="@id/solution_text_view"
+        app:layout_constraintStart_toEndOf="@id/solution_text_view"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

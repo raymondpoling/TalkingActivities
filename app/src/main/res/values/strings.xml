@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">Heads Down!</string>
     <string name="make_a_guess_hint">Make a guess!</string>
-    <string name="guess_label">Guess</string>
+    <string name="guess_label">Last Guess</string>
     <string name="hints_label">Hint</string>
     <string name="solution">Solution</string>
-    <string name="guesses">Guesses</string>
     <string name="give_clue_hint">Give A Clue</string>
     <string name="give_clue_button_label">Give Clue</string>
     <string name="accept_answer">Accept Answer</string>
     <string name="swap_players">Swap Players!</string>
+    <string name="guess_button_label">Make a Guess</string>
 </resources>

@@ -6,46 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".view.AskerActivity">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/centerline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
+
+
     <TextView
         android:id="@+id/solution_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/standard_margin"
         android:text="@string/solution"
         android:textColor="#D8291C"
-        android:textSize="32sp"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="@dimen/large_text"
+        app:layout_constraintEnd_toStartOf="@id/centerline"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/guess_const_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24sp"
-        android:text="@string/guesses"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hint_edit_text" />
+        android:layout_margin="@dimen/standard_margin"
+        android:text="@string/guess_label"
+        android:textSize="@dimen/medium_text"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/centerline"
+        app:layout_constraintTop_toBottomOf="@id/hint_edit_text" />
 
     <EditText
         android:id="@+id/hint_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="48dp"
-        android:ems="10"
+        android:layout_margin="@dimen/standard_margin"
+        android:ems="8"
         android:hint="@string/give_clue_hint"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/solution_text_view"
+        app:layout_constraintEnd_toStartOf="@id/centerline"
+        app:layout_constraintTop_toBottomOf="@id/solution_text_view"
         android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/send_1_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="57dp"
+        android:layout_margin="@dimen/standard_margin"
         android:text="@string/give_clue_button_label"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.41"
         app:layout_constraintStart_toEndOf="@+id/hint_edit_text"
         app:layout_constraintTop_toTopOf="@+id/hint_edit_text" />
 
@@ -53,18 +61,18 @@
         android:id="@+id/guess_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guess_const_text_view" />
+        android:layout_margin="@dimen/standard_margin"
+        app:layout_constraintBottom_toBottomOf="@+id/guess_const_text_view"
+        app:layout_constraintStart_toEndOf="@id/centerline"
+        app:layout_constraintTop_toTopOf="@id/guess_const_text_view" />
 
     <Button
         android:id="@+id/accept_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="53dp"
+        android:layout_margin="@dimen/standard_margin"
         android:text="@string/accept_answer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/solution_text_view"
+        app:layout_constraintStart_toEndOf="@id/centerline"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

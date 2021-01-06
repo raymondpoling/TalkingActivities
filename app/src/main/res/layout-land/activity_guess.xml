@@ -1,29 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.GuessActivity">
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guess_centerline_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/standard_margin"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent=".50"/>
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/hint_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/standard_margin"
-        android:textSize="@dimen/medium_text"
+        android:textSize="@dimen/large_text"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/guess_centerline_guideline"
-        app:layout_constraintTop_toTopOf="@+id/hints_const_text_view"
-        app:layout_constraintBottom_toBottomOf="@+id/hints_const_text_view"/>
+        app:layout_constraintStart_toEndOf="@id/hints_const_text_view"
+        app:layout_constraintTop_toTopOf="@id/hints_const_text_view"
+        app:layout_constraintBottom_toBottomOf="@id/hints_const_text_view"
+        />
 
     <EditText
         android:id="@+id/guess_edit_text"
@@ -32,10 +23,12 @@
         android:layout_margin="@dimen/standard_margin"
         android:ems="8"
         android:hint="@string/make_a_guess_hint"
+        android:textSize="@dimen/large_text"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@id/guess_centerline_guideline"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@id/hint_text_view"
+        app:layout_constraintTop_toBottomOf="@id/hint_text_view"
+        />
 
     <Button
         android:id="@+id/send_2_button"
@@ -43,7 +36,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/standard_margin"
         android:text="@string/guess_button_label"
-        app:layout_constraintStart_toEndOf="@id/guess_centerline_guideline"
+        android:textSize="@dimen/large_text"
+        app:layout_constraintStart_toEndOf="@id/guess_edit_text"
         app:layout_constraintTop_toTopOf="@id/guess_edit_text"
         app:layout_constraintBottom_toBottomOf="@id/guess_edit_text"/>
 
@@ -51,10 +45,10 @@
         android:id="@+id/hints_const_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/medium_text"
+        android:textSize="@dimen/large_text"
         android:layout_margin="@dimen/standard_margin"
         android:text="@string/hints_label"
-        app:layout_constraintEnd_toStartOf="@id/guess_centerline_guideline"
-        app:layout_constraintTop_toBottomOf="@id/guess_edit_text" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

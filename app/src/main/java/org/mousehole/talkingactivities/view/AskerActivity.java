@@ -29,11 +29,13 @@ public class AskerActivity extends AppCompatActivity {
 
     private final Random random = new Random();
 
-    public void selectSolution() {
-        String solution = sharedPreferences.getString(SOLUTION,
+    public String selectSolution() {
+        String s = sharedPreferences.getString(SOLUTION,
                  Constants.possibleAnswers[
                             random.nextInt(Constants.possibleAnswers.length)].toUpperCase());
-        solutionTextView.setText(solution);
+        sharedPreferences.edit().putString(SOLUTION,s).apply();
+        Log.d("TAG_SELECT", s + " <--- solution");
+        return s;
     }
 
     /*
@@ -42,13 +44,13 @@ public class AskerActivity extends AppCompatActivity {
     public void clear() {
         sharedPreferences.edit().clear().apply();
         guessTextView.setText("");
-        selectSolution();
+        solutionTextView.setText(selectSolution());
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_asker);
 
         // Binding
         sharedPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
@@ -59,7 +61,7 @@ public class AskerActivity extends AppCompatActivity {
         submitButton = findViewById(R.id.send_1_button);
         acceptButton = findViewById(R.id.accept_button);
 
-        selectSolution();
+        solutionTextView.setText(selectSolution());
 
         String guess = sharedPreferences.getString(Constants.GUESS, "");
 
@@ -92,5 +94,8 @@ public class AskerActivity extends AppCompatActivity {
         super.onResume();
         String guess = sharedPreferences.getString(Constants.GUESS, "");
         guessTextView.setText(guess);
+        String solution = selectSolution();
+        solutionTextView.setText(solution);
+
     }
 }
